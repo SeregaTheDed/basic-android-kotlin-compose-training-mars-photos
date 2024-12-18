@@ -18,6 +18,7 @@
 
 package com.example.marsphotos.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -33,9 +34,10 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.marsphotos.R
-import com.example.marsphotos.ui.screens.HomeScreen
-import com.example.marsphotos.ui.screens.MarsViewModel
+import com.example.marsphotos.ui.screens.homescreen.view.HomeScreen
+import com.example.marsphotos.ui.screens.homescreen.viewmodel.MarsViewModel
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MarsPhotosApp() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -48,8 +50,7 @@ fun MarsPhotosApp() {
         ) {
             val marsViewModel: MarsViewModel = viewModel()
             HomeScreen(
-                marsUiState = marsViewModel.marsUiState,
-                contentPadding = it,
+                marsUiState = marsViewModel.marsUiState
             )
         }
     }
